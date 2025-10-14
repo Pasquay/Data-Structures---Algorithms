@@ -3,8 +3,10 @@
 ## Table of Contents
 
 ### 📁 **Core Files**
-- [`prac.c`](prac.c) - **Main Testing File**
-- [`prac.h`](prac.h) - **Main Testing Header File**
+| File | Description |
+|------|-------------|
+| [`prac.c`](prac.c) | **Main Testing File** |
+| [`prac.h`](prac.h) | **Main Testing Header File** |
 
 ---
 
@@ -29,43 +31,59 @@
 
 ---
 
-### 🏃‍♂️ **ADT Practice**
-- **[`adtPractice/`](adtPractice/)** - Hands-on ADT implementation practice
-  - `ADTPractice.c` - Main practice file
-  - `array.h`, `linklist.h` - Core data structures
-  - `name.h`, `struct.h`, `student.h` - Custom data types
-  - **Template folder** with clean starting files
+### 📖 **ADT Guide & Reference**
+| Data Structure | Files | Description |
+|----------------|-------|-------------|
+| **[Array](ADTGuide/Array/)** | 4 progressive versions | **Foundation Array Implementations** |
+| | | - `ArrayV1.c/.h` - Basic array operations |
+| | | - `ArrayV2.c/.h` - Enhanced array with dynamic sizing |
+| | | - `ArrayV3.c/.h` - Advanced array with utilities |
+| | | - `ArrayV4.c/.h` - Complete array implementation |
+| **[LinkedList](ADTGuide/LinkList/)** | `LinkListV1.c/.h` | **Core Linked List Implementation** |
+| | | - Insertion, deletion, traversal operations |
+| | | - Memory management and pointer manipulation |
+| **[CursorBased](ADTGuide/CursorBased/)** | `CursorBased.c/.h` | **Memory-Efficient Cursor Arrays** |
+| | | - Simulated pointers using array indices |
+| | | - Fixed memory allocation approach |
+| **[Stack](ADTGuide/Stack/)** | 2 implementation versions | **LIFO Data Structure** |
+| | | - `StackV1.c/.h` - Array-based stack implementation |
+| | | - `StackV2.c/.h` - Enhanced stack with utilities |
+| **[Queue](ADTGuide/Queue/)** | 2 implementation versions | **FIFO Data Structure** |
+| | | - `QueueV1.c/.h` - Circular array-based queue |
+| | | - `QueueV2.c/.h` - Advanced queue implementation |
+| **[Dictionary](ADTGuide/Dictionary/)** | **4 Complete Hashing Implementations** | **Hash Table Collision Resolution** |
+| | | - `openHashingArr.c/.h` - Open hashing with arrays |
+| | | - `openHashingLL.c/.h` - Open hashing with linked lists |
+| | | - `closedHashingLinearHashing.c/.h` - Linear probing technique |
+| | | - `closedHashingProgressiveOverflow.c/.h` - Progressive overflow method |
+| **[BinaryHeap](ADTGuide/BinaryHeap/)** | 3 heap implementations | **Priority-Based Data Structures** |
+| | | - `binaryHeapMin.c/.h` - Min heap implementation |
+| | | - `binaryHeapMax.c/.h` - Max heap implementation |
+| | | - `priorityQueue.c/.h` - Priority queue using heaps |
+| **[BitVectorSet](ADTGuide/BitVectorSet/)** | 3 progressive versions | **Bit Manipulation Sets** |
+| | | - `BitVectorSetV1.c/.h` - Basic bit vector operations |
+| | | - `BitVectorSetV2.c/.h` - Enhanced bit manipulation |
+| | | - `BitVectorSetV3.c/.h` - Complete bit vector set |
 
 ---
 
-### 📖 **ADT Guide & Reference**
-**[`ADTGuide/`](ADTGuide/)** - Complete reference implementations
-
-#### **Linear Data Structures**
-- **[Array](ADTGuide/Array/)** - 4 progressive versions (V1-V4)
-- **[LinkedList](ADTGuide/LinkList/)** - Core linked list implementation
-- **[CursorBased](ADTGuide/CursorBased/)** - Memory-efficient cursor arrays
-
-#### **Stack & Queue**
-- **[Stack](ADTGuide/Stack/)** - 2 implementation versions
-- **[Queue](ADTGuide/Queue/)** - 2 implementation versions
-
-#### **Advanced Structures**
-- **[Dictionary](ADTGuide/Dictionary/)** - **4 Hashing Implementations**
-  - `openHashingArr.c/.h` - Open hashing with arrays
-  - `openHashingLL.c/.h` - Open hashing with linked lists
-  - `closedHashingLinearHashing.c/.h` - Linear probing
-  - `closedHashingProgressiveOverflow.c/.h` - Progressive overflow
-- **[BinaryHeap](ADTGuide/BinaryHeap/)** - Min/Max heaps + Priority Queue
-- **[BitVectorSet](ADTGuide/BitVectorSet/)** - 3 versions of bit manipulation sets
+### 🏃‍♂️ **ADT Practice**
+| Practice Area | Files | Description |
+|---------------|-------|-------------|
+| **[`adtPractice/`](adtPractice/)** | Multiple practice files | **Hands-on ADT implementation practice** |
+| | | - `ADTPractice.c` - Main practice file |
+| | | - `array.h`, `linklist.h` - Core data structures |
+| | | - `name.h`, `struct.h`, `student.h` - Custom data types |
+| | | - **Template folder** with clean starting files |
 
 ---
 
 ### 🎯 **CISCO Tutorials**
-**[`!CISCO-Tutorials/`](!CISCO-Tutorials/)** - Special tutorial sessions
-
-- **[09-06-2025 Tutorial](!CISCO-Tutorials/09-06-2025_DSA_Tutorial/)** 
-  - `09-06-2025.c`, `stack.h` - Stack operations tutorial
-- **[Bitwise Operations](!CISCO-Tutorials/BitwiseOperations/)**
-  - `BitwiseOperations.c/.h` - Comprehensive bitwise manipulation
-  - `subwaySurfers.c/.h` - Fun bitwise application
+| Tutorial | Files | Description |
+|----------|-------|-------------|
+| **[09-06-2025 Tutorial](!CISCO-Tutorials/09-06-2025_DSA_Tutorial/)** | `09-06-2025.c`, `stack.h` | **Stack Operations Tutorial** |
+| | | - Stack operations tutorial session |
+| | | - Practical implementation examples |
+| **[Bitwise Operations](!CISCO-Tutorials/BitwiseOperations/)** | Multiple bitwise files | **Comprehensive Bitwise Manipulation** |
+| | | - `BitwiseOperations.c/.h` - Core bitwise operations |
+| | | - `subwaySurfers.c/.h` - Fun bitwise application |
