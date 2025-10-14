@@ -185,7 +185,3 @@ void display(VHeap *vh, int *head){
     }
     printf("Head: [%d] Avail: [%d]\n\n", *head, vh->avail);
 }
-
-
-
-
