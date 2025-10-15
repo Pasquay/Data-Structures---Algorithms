@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "prac.h"
+#include "SpellsLinkedList.h"
 
 int main() {
     String spell;
