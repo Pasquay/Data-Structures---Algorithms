@@ -63,50 +63,24 @@ void enqueue(Queue *q, int data, int prio){
 }
 
 void enqueuePrio(Queue *q, int data, int prio){
-    if(((q->rear+2)%MAX)==q->front) printf("Error: Full\n");
+    if(isFull(*q)) printf("Error: Full\n");
     else {
-        Queue *temp = malloc(sizeof(Queue));
-        if(!temp) printf("Error: Memory Failure\n");
-        else {
-            initQueue(temp);
-            while(((q->rear+1)%MAX)!=q->front && prio<=front(*q).prio){
-                Node node = dequeue(q);
-                enqueue(temp, node.data, node.prio);
-            }
-            enqueue(temp, data, prio);
-            while(((q->rear+1)%MAX)!=q->front){
-                Node node = dequeue(q);
-                enqueue(temp, node.data, node.prio);
-            }
-            while(((temp->rear+1)%MAX!=temp->front)){
-                Node node = dequeue(temp);
-                enqueue(q, node.data, node.prio);
-            }
+        Queue temp; initQueue(&temp);
+        while(!isEmpty(*q) && prio<=front(*q).prio){
+            Node node = dequeue(q);
+            enqueue(&temp, node.data, node.prio);
+        }
+        enqueue(&temp, data, prio);
+        while(!isEmpty(*q)){
+            Node node = dequeue(q);
+            enqueue(&temp, node.data, node.prio);
+        }
+        while(!isEmpty(temp)){
+            Node node = dequeue(&temp);
+            enqueue(q, node.data, node.prio);
         }
     }
 }
-
-
-// void enqueuePrio(Queue *q, int data, int prio){
-//     if(isFull(*q)) printf("Error: Queue is Full\n");
-//     else {
-//         Queue temp; initQueue(&temp);
-//         while(!isEmpty(*q) && prio<=front(*q).prio){
-//             Node node = dequeue(q);
-//             enqueue(&temp, node.data, node.prio);
-//         }
-//         enqueue(&temp, data, prio);
-//         while(!isEmpty(*q)){
-//             Node node = dequeue(q);
-//             enqueue(&temp, node.data, node.prio);
-//         }
-//         while(!isEmpty(temp)){
-//             Node node = dequeue(&temp);
-//             enqueue(q, node.data, node.prio);
-//         }
-//         printf("Success: Enqueue\n");
-//     }
-// }
 
 void display(Queue q){
     printf("=======QUEUE=======\n");
@@ -115,7 +89,7 @@ void display(Queue q){
     for(Queue temp=q; !isEmpty(temp); i++){
         node = dequeue(&temp);
         printf(" [%3d][%4d][%4d]\n", 
-            i, temp.front-1, node.data, node.prio);
+            temp.front, node.data, node.prio);
     }
     printf("Count: [%2d]\n", i);
     printf("===================\n");

@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdbool.h>
-#include"priorityQueueArray.h"
+#include"PQArray.h"
 
 int main(){
     int data[10] = {22,45,50,14,8,10,35,99,98};

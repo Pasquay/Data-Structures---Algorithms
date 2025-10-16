@@ -23,9 +23,6 @@ void deletePos(List *list, int index);
 int retrieve(List *list, int index);
 int locate(List *list, int data);
 
-/**
- * INITALIZE AND DELETE LIST
- */
 List* initialize(){
     List *l = (List*)malloc(sizeof(List));
     if(l!=NULL){
@@ -51,13 +48,8 @@ void empty(List *list){
         printf("Success: List emptied.\n");
     }
 }
-
-
-/**
- * DISPLAY LIST
- */
 void display(List *list){
-    // current - haed
+    // current - head
     printf("List: ");
     Node *current;
     for(current=list->head; current!=NULL; current=current->next) {
@@ -65,11 +57,6 @@ void display(List *list){
     }
     printf("NULL\nCount: %d\n", list->count);
 }
-
-
-/**
- * INSERT ELEMENT
- */
 void insertFirst(List *list, int data){
     Node *temp = (Node*)malloc(sizeof(Node));
     if(temp==NULL) printf("Error: Memory allocation failure.\n");
@@ -120,11 +107,6 @@ void insertPos(List *list, int data, int index){
         }
     }
 }
-
-
-/**
- * DELETE ELEMENT
- */
 void deleteStart(List *list){
     if(list->head == NULL) printf("Error: List is empty.\n");
     else {
@@ -169,12 +151,6 @@ void deletePos(List *list, int index){
         }
     }
 }
-
-
-/**
- * RETRIEVE AND LOCATE ELEMENT
- */
-
 int retrieve(List *list, int index){
     if(index > list->count-1) printf("Error: Index is out of bounds.\n");
     else {
