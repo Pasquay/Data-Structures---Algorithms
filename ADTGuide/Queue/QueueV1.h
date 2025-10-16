@@ -22,9 +22,6 @@ int isFull(Queue* q);
 int front(Queue* q);
 
 
-/**
- * INITIALIZE LIST
- */
 Queue* initialize(){
     Queue *q = (Queue*)malloc(sizeof(Queue));
     if(q == NULL) printf("Error: Memory allocation failure.\n");
@@ -37,10 +34,6 @@ Queue* initialize(){
     return q;
 }
 
-
-/**
- * DISPLAY LIST
- */
 void display(Queue* q){
     Queue l = *q;
     int i;
@@ -53,10 +46,6 @@ void display(Queue* q){
     printf("Count: [%d]  Front: [%d]  Rear: [%d]\n", q->list.count, q->front, q->rear);
 }
 
-
-/**
- * ENQUEUE ELEMENT
- */
 void enqueue(Queue* q, int value){
     if(q->list.count == MAX) printf("Error: Queue is full.\n");
     else {
@@ -66,10 +55,6 @@ void enqueue(Queue* q, int value){
     }
 }
 
-
-/**
- * DEQUEUE ELEMENT
- */
 int dequeue(Queue* q){
     if(q->list.count == 0) printf("Error: List is empty.\n");
     else {
@@ -79,21 +64,14 @@ int dequeue(Queue* q){
     }
 }
 
-
-/**
- * CHECKS EMPTY/FULL
- */
 int isEmpty(Queue* q){
     return (q->list.count == 0) ? 1 : 0;
 }
+
 int isFull(Queue* q){
     return (q->list.count == MAX) ? 1 : 0;
 }
 
-
-/**
- * RETURN FRONT ELEMENT
- */
 int front(Queue* q){
     if(q->list.count == 0) printf("Error: List is empty.\n");
     Queue l = *q;
