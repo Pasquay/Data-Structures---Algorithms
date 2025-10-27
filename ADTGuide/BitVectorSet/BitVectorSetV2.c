@@ -3,7 +3,7 @@
 
 int main(){
     printf("=====INITIALIZE SET=====\n");
-    Set x;
+    Set x; 
     initialize(&x);
     displayBits(x);
     displaySet(x);
