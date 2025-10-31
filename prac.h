@@ -2,48 +2,95 @@
 #include<stdlib.h>
 #include<math.h>
 #include<stdbool.h>
-#define BITS 8
+#define DICT_S 10
+#define DICT_M 3
+#define DICT_MAX DICT_S*DICT_M
 
-typedef char Set;
+typedef int ID;
 
-void initialize(Set *s){ *s = 0; }
-void displayBits(Set s){
-    for(int mask=1<<sizeof(Set)*BITS-1, gap=0; mask>0; mask>>=1, gap++){
-        if(gap%4==0 && gap) printf(" ");
-        printf("%d", mask&s?1:0);
-    }
-    printf("\n");
+typedef ID Dictionary[DICT_MAX];
+
+void initDict(Dictionary d){
+    for(int i=0; i<DICT_MAX; i++) d[i] = 0;
 }
-void displaySet(Set s){
-    printf("{");
-    for(int mask=1, first=0, value=1; mask<sizeof(Set)<<BITS-1; mask<<=1, value++){
-        if(!first && mask&s) printf(" %d", value), first=1;
-        else if(first && mask&s) printf(", %d", value);
-    }
-    printf(" }\n");
+int hash(ID id){
+    return (id%DICT_S)*DICT_M;
 }
-void insert(Set *s, int elem){
-    if(elem>7 || elem<0) printf("E: [%d] Out of Bounds\n", elem);
-    else {
-        if(*s&1<<sizeof(Set)*elem-1) printf("E: [%d] Alread inserted\n", elem);
-        else {
-            *s |= 1<<sizeof(Set)*elem-1;
-            printf("S: [%d] Inserted\n", elem);
+void display(Dictionary d){
+    printf("\n\n=====DICTIONARY=====\n");
+    printf("NDX | Students...\n");
+    int count = 0;
+    for(int i=0; i<DICT_S; i++){   
+        int first = 0;
+        for(int j=i*DICT_M; j<(i*DICT_M)+DICT_M && d[j]; j++, count++){
+            if(!first) printf("%d | ", i), first=1;
+            printf("[%3d] ", d[j]);
         }
+        if(first) printf("\n");
     }
+    printf(" Count: [%2d]\n", count);
+    printf("=====DICTIONARY=====\n\n\n");
 }
-void delete(Set *s, int elem){
-    if(elem>7 || elem<0) printf("E: [%d] Out of Bounds\n", elem);
+void insertFirst(Dictionary d, ID id){
+    int ndx = hash(id), i=ndx;
+    for(; i<ndx+DICT_M && d[i] && d[i]!=id; i++){}
+    if(i==ndx+DICT_M) printf("E: Full [%2d]\n", (i/3)-1);
+    else if(d[i]==id) printf("E: [%3d] Already Exists\n", id);
     else {
-        if(*s&1<<sizeof(Set)*elem-1){
-            *s &= ~(1<<sizeof(Set)*elem-1);
-            printf("S: [%d] Delete\n", elem);
-        } else printf("E: [%d] Already Deleted\n", elem);
+        for(i=ndx+DICT_M-1; i>ndx; i--) d[i] = d[i-1];
+        d[i] = id;
+        printf("S: [%3d] Insert First\n", id);
     }
 }
-bool find(Set s, int elem){ return (elem>7 || elem<0) ? false : s&1<<sizeof(Set)*elem; }
-Set setUnion(Set x, Set y){ return x|y; }
-Set setIntersection(Set x, Set y){ return x&y; }
-Set setDifference(Set x, Set y){ return x&~y; }
+void insertLast(Dictionary d, ID id){
+    int ndx = hash(id), i;
+    for(i=ndx; i<ndx+DICT_M && d[i] && d[i]!=id; i++){}
+    if(i==ndx+DICT_M) printf("E: Full [%2d]\n", (i/3)-1);
+    else if(d[i]==id) printf("E: [%3d] Already Exists\n", id);
+    else {
+        d[i] = id;
+        printf("S: [%3d] Insert Last\n", id);
+    }
+}
+void deleteFirst(Dictionary d, ID id){
+    int ndx = hash(id), i;
+    if(!d[ndx]) printf("E: Empty [%2d]\n", (ndx/3));
+    else {
+        for(i=ndx; i<ndx+DICT_M-1 && d[i+1]; i++) d[i] = d[i+1];
+        d[i] = 0;
+        printf("S: [%3d] Delete First\n", id);
+    }
+}
+void deleteLast(Dictionary d, ID id){
+    int ndx = hash(id), i;
+    for(i=ndx+DICT_M-1; i>=ndx && !d[i]; i--){}
+    if(i<ndx) printf("E: Empty [%2d]\n", (ndx/3));
+    else {
+        d[i] = 0;
+        printf("S: [%3d] Delete Last\n", id);
+    }
+}
+void deleteID(Dictionary d, ID id){
+    int ndx = hash(id), i;
+    for(i=ndx; i<ndx+DICT_M && d[i]!=id; i++){}
+    if(i==ndx+DICT_M) printf("E: [%3d] Not Found\n", id);
+    else {
+        for(; i<ndx+DICT_M-1 && d[i+1]; i++) d[i] = d[i+1];
+        d[i] = 0;
+        printf("S: [%3d] Deleted ID\n", id);
+    }
+}
+bool find(Dictionary d, ID id){
+    int ndx = hash(id), i;
+    for(i=ndx; i<ndx+DICT_M && d[i]!=id; i++){}
+    return (i==ndx+DICT_M) ? false : true;
+}
+
+
+
+
+
+
+
 
 
