@@ -18,7 +18,9 @@ int main(){
     printf("1. Convert the decimal integers into a bit vector Array\n");
     printf("2. Decode the String using the converted bit vector Array\n");
     printf("3. Convert and Decode while displaying both\n\nChoice: ");
-    scanf("%d", &choice);
+    // scanf("%d", &choice);
+	choice = 2;
+	printf("%d\n", choice);
 
     printf("\n");
 	switch(choice){

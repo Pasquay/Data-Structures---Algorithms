@@ -1,5 +1,10 @@
 # [E2] - Sabado Cipher - Decoding
+# INSTRUCTIONS
 by Janie Lane Sabado
+
+[1. Instructions](!Instructions.md)
+
+[2. Test Cases](!test_cases.md)
 
 ---
 

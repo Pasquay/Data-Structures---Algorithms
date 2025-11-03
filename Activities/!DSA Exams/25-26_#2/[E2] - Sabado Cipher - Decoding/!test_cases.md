@@ -1,5 +1,16 @@
+# [E2] - Sabado Cipher - Decoding
+# TEST CASES
+by Janie Lane Sabado
+
+[1. Instructions](!Instructions.md)
+
+[2. Test Cases](!test_cases.md)
+
+---
+
 [#1] Convert to Bit Vector Array
 ----------------------------------------------------
+
 Given the following integers, decode the numbers to form the 8 letter word
 17729 21074 18766 18259
 

@@ -3,5 +3,6 @@
 #include <math.h>
 
 int main(){
-    for(int i=0; i<16; i++) printf("%2d - %d\n", i, (int)pow(2,i));
+    printf("%c", 79);
+    printf("%c", 79);
 }
