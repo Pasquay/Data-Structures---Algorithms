@@ -37,21 +37,26 @@ int leftChild(int i) { return (i*2)+1; }
 int rightChild(int i){ return (i*2)+2; }
 
 void heapify(char *arr[], int n, int i){
-    while(leftChild(i)<n && (strcmp(arr[i], arr[leftChild(i)])<0 || strcmp(arr[i], arr[rightChild(i)])<0)){
-        int largest = (strcmp(arr[leftChild(i)], arr[rightChild(i)])<0 && rightChild(i)<n) ? rightChild(i) : leftChild(i);
-        char *temp = arr[i];
-        arr[i] = arr[largest];
-        arr[largest] = temp;
-        i = largest;
-    }
+    int largest, l, r;
+    do {
+        largest=i, l=leftChild(i), r=rightChild(i);
+        if(l<n && strcmp(arr[largest], arr[l])<0) largest = l;
+        if(r<n && strcmp(arr[largest], arr[r])<0) largest = r;
+        if(largest!=i){
+            char *temp = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = temp;
+            i = largest;
+        }
+    } while(largest!=i);
 }
 
 void heapSort(char *arr[], int n){
-    for(int i=parent(n-1); i>=0; i--) heapify(arr, n, i);
+    for(int i=parent(n-1); i>=0; i--) heapify(arr,n,i);
     for(int i=n-1; i>0; i--){
         char *temp = arr[0];
         arr[0] = arr[i];
         arr[i] = temp;
-        heapify(arr, i, 0);
+        heapify(arr,i,0);
     }
 }

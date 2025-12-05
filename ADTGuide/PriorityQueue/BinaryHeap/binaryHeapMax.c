@@ -9,29 +9,35 @@ int main(){
         95, 26, 64, 37, 58,
         100,
     };
-
+ 
     Heap list;
     initHeap(&list);
-    display(list);
-
-    printf("=====Pushing=====\n");
-    for(int i=0; i<21; i++) push(&list, arr[i]);
     // display(list);
     displayList(list);
+
+    printf("\n\n=====Pushing=====\n");
+    for(int i=0; i<21; i++) insertSorted(&list, arr[i]); // Normal
+    // for(int i=0; i<21; i++) insert(&list, arr[i]); // To test sorting
+    display(list);
+    displayList(list);
+    // displayArray(list);
     
     printf("\n\n=====Popping=====\n");
-    for(int i=0; i<21; i++) printf("Popped: [%2d]\n", pop(&list));
+    for(int i=0; i<21; i++) printf("Popped: [%2d]\n", deleteMax(&list));
     // display(list);
-    displayList(list);
-
-    printf("\n\n=====Pre-Heapify=====\n");
-    Heap list2;
-    initHeap(&list2);
-    for(int i=0; i<MAX; i++) list2.data[list2.lastndx++] = arr[i];
-    // display(list2);
-    displayList(list2);
-    printf("\n\n=====Post-Heapify=====\n");
-    heapify(&list2);
-    // display(list2);
-    displayList(list2);
+    // displayList(list);
+    // displayArray(list);
+    
+    // printf("\n\n=====Heapify=====\n");
+    // // uncomment insert and comment insertSorted
+    // heapify(&list);
+    // // display(list);
+    // displayList(list);
+    // // displayArray(list);
+    
+    // printf("\n\n=====Sorting=====\n");
+    // heapSort(&list);
+    // // display(list);
+    // displayList(list);
+    // // displayArray(list);
 }
